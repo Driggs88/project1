@@ -1,0 +1,12 @@
+body {
+  background-image: url("img/background1.png");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+canvas {
+    margin: 0 auto;
+    display: block;
+    border: 1px solid black;
+    width: 100%;
+}

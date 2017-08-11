@@ -1,0 +1,52 @@
+.sprite {
+	width: 24px;
+	height: 32px;
+	margin-top: 10px;
+}
+
+.right {
+	background-image: image(img/right.png;
+}
+
+.left {
+	background-image: image(img/left.png);
+}
+
+.walking-right {
+	background-image: url(img/walking-right.png);
+	-webkit-animation: walk .9s steps(8) infinite;
+	-moz-animation: walk .9s steps(8) infinite;
+	-ms-animation: walk .9s steps(8) infinite;
+	-o-animation: walk .9s steps(8) infinite;
+	animation: walk .9s steps(8) infinite;
+}
+
+.walking-left {
+	background-image: url(img/walking-left.png);
+	-webkit-animation: walk .9s steps(8) infinite;
+	-moz-animation: walk .9s steps(8) infinite;
+	-ms-animation: walk .9s steps(8) infinite;
+	-o-animation: walk .9s steps(8) infinite;
+	animation: walk .9s steps(8) infinite;
+}
+
+@-webkit-keyframes walk {
+	from { background-position: 0px; }
+	to { background-position: -192px; }
+}
+@-moz-keyframes walk {
+	from { background-position: 0px; }
+	to { background-position: -192px; }
+}
+@-ms-keyframes walk {
+	from { background-position: 0px; }
+	to { background-position: -192px; }
+}
+@-o-keyframes walk {
+	from { background-position: 0px; }
+	to { background-position: -192px; }
+}
+@-keyframes walk {
+	from { background-position: 0px; }
+	to { background-position: -192px; }
+}
