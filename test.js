@@ -52,6 +52,10 @@ function init() {
 }
 
 //random math problem
+function changeOperator (operator){
+  operation = operator;
+  console.log(operation);
+}
 function ask() {
     var a = Math.floor(Math.random() * 10) + 1;
     var b = Math.floor(Math.random() * 10) + 1;
@@ -92,15 +96,15 @@ function ask() {
 }
 
 function checkRandomChallenge() {
-    var odds = [3, 23, 11, 30, 44, 10, 2, 32, 49, 17];
+    var odds = [3, 7, 12, 16, 24, 29, 35, 38, 41, 47];
     var randomNum =  Math.floor(Math.random() * (50 - 0)) + 1;
     console.log(randomNum);
     return odds.indexOf(randomNum) !== -1;
 }
 
 // function boost() {
-//   var dx = 4;
-//   var dy = 4;
+//   var dx = 8;
+//   var dy = 8;
 //   if (correct == true){
 //
 //   }
@@ -124,6 +128,7 @@ function prepareCharacterMove() {
             totalAnswers++;
             alert( "You got "+correctAnswers+"/"+totalAnswers+" correctly");
         }
+        doKeyUp(evt);
     }
 }
 
@@ -216,3 +221,21 @@ function draw() {
 init();
 window.addEventListener('keydown',doKeyDown,true);
 window.addEventListener('keyup',doKeyUp,true);
+
+$(document).ready(function(){
+  $("#exampleModal").modal();
+
+  $('.add').on('click', (function(){
+    changeOperator('add');
+}));
+  $('.subtract').on('click', (function(){
+    changeOperator('subtract');
+}));
+  $('.divide').on('click', (function(){
+    changeOperator('divide');
+}));
+  $('.multiply').on('click', (function(){
+    changeOperator('multiply');
+}));
+
+});

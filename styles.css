@@ -10,3 +10,14 @@ canvas {
     border: 1px solid black;
     width: 100%;
 }
+
+
+@import url("../libs/bootstrap/css/font-awesome.min.css");
+
+* {
+  border-radius:0 !important;
+}
+
+body {
+    padding:30px;
+}

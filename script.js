@@ -2,8 +2,8 @@
 
 var canvas;
 var ctx;
-var dx = 4;
-var dy = 4;
+var dx = 8;
+var dy = 8;
 var x = 290;
 var y = 5;
 var stepCounter = 0;
