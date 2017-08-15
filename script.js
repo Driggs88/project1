@@ -2,8 +2,8 @@
 
 var canvas;
 var ctx;
-var dx = 8;
-var dy = 8;
+var dx = 4;
+var dy = 4;
 var x = 290;
 var y = 5;
 var stepCounter = 0;
@@ -52,7 +52,12 @@ function init() {
 }
 
 //random math problem
+function changeOperator (operator){
+  operation = operator;
+  console.log(operation);
+}
 function ask() {
+  totalAnswers++;
     var a = Math.floor(Math.random() * 10) + 1;
     var b = Math.floor(Math.random() * 10) + 1;
     var maxNum = Math.max(a, b);
@@ -80,6 +85,9 @@ function ask() {
         }
         break;
         case 'divide': {
+          while(maxNum % minNum !==0){
+            minNum = Math.floor(Math.random() * 10) + 1;
+          }
             correctAnswer = maxNum / minNum;
             operationChallenge = divide;
         }
@@ -88,52 +96,63 @@ function ask() {
 
     }
     var userAnswer = prompt("How much is " + maxNum + " " + operationChallenge + " " + minNum + "?");
-    return correctAnswer === Number(userAnswer);
+    if(correctAnswer === Number(userAnswer)){
+      correctAnswers++;
+      boost();
+    }
+    giveFeedBack();
 }
 
 function checkRandomChallenge() {
-    var odds = [3, 23, 11, 30, 44, 10, 2, 32, 49, 17];
+    var odds = [3, 7, 12, 16, 24, 29, 35, 38, 41, 47];
     var randomNum =  Math.floor(Math.random() * (50 - 0)) + 1;
     console.log(randomNum);
     return odds.indexOf(randomNum) !== -1;
 }
 
-// function boost() {
-//   var dx = 4;
-//   var dy = 4;
-//   if (correct == true){
-//
-//   }
-// }
+function boost() {
+  console.log("BOOST FUNCTION CALLED");
+  dx = 6;
+  dy = 6;
+  setTimeout(function(){
+    dx = 4;
+    dy = 4;
+  },5000);
+}
 
 function doKeyUp(evt){
+
   if (evt.keyCode == 38 || evt.keyCode == 40 || evt.keyCode == 37 || evt.keyCode == 39){
     isMoving = false;
   }
 }
 
+
+
+function giveFeedBack(){
+  alert( "You got "+correctAnswers+"/"+totalAnswers+" correctly");
+
+}
+
 function prepareCharacterMove() {
+  console.log("dx and dy",dx, dy);
     isMoving = true;
     checkcollision();
     stepCounter += dx;
     if(stepCounter % 50 === 0) {
-        if(checkRandomChallenge()){
-            if(ask()){
-                correctAnswers++;
-            }
-            totalAnswers++;
-            alert( "You got "+correctAnswers+"/"+totalAnswers+" correctly");
-        }
+      if  (checkRandomChallenge()){
+          ask();
     }
+  }
 }
 
 function doKeyDown(evt){
   switch (evt.keyCode) {
     case 38:  /* Up arrow was pressed */
+    evt.preventDefault();
       if (y - dy > 0){
         y -= dy;
         spriteSheetY = 0;
-        // clear();
         prepareCharacterMove();
         if (collision == 1){
           y += dy;
@@ -143,10 +162,10 @@ function doKeyDown(evt){
 
       break;
       case 40:  /* Down arrow was pressed */
+      evt.preventDefault();
       if (y + dy < HEIGHT ){
         y += dy;
         spriteSheetY = 64;
-        // clear();
         prepareCharacterMove();
         if (collision == 1){
           y -= dy;
@@ -156,10 +175,10 @@ function doKeyDown(evt){
 
       break;
       case 37:  /* Left arrow was pressed */
+      evt.preventDefault();
       if (x - dx > 0){
         x -= dx;
         spriteSheetY = 96;
-        // clear();
         prepareCharacterMove();
         if (collision == 1){
           x += dx;
@@ -168,10 +187,10 @@ function doKeyDown(evt){
       }
       break;
       case 39:  /* Right arrow was pressed */
+      evt.preventDefault();
       if ((x + dx < WIDTH)){
         x += dx;
         spriteSheetY = 32;
-        // clear();
         prepareCharacterMove();
         if (collision == 1){
           x -= dx;
@@ -216,3 +235,46 @@ function draw() {
 init();
 window.addEventListener('keydown',doKeyDown,true);
 window.addEventListener('keyup',doKeyUp,true);
+
+$(document).ready(function(){
+  $("#exampleModal").modal();
+
+  $('.add').on('click', (function(){
+    changeOperator('add');
+}));
+  $('.subtract').on('click', (function(){
+    changeOperator('subtract');
+}));
+  $('.divide').on('click', (function(){
+    changeOperator('divide');
+}));
+  $('.multiply').on('click', (function(){
+    changeOperator('multiply');
+}));
+$('.all').on('click', (function(){
+  changeOperator('all');
+}));
+
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var totalSeconds = 0;
+    setInterval(setTime, 1000);
+    function setTime()
+      {
+        ++totalSeconds;
+        secondsLabel.innerHTML = pad(totalSeconds%60);
+        minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+    }
+    function pad(val)
+      {
+        var valString = val + "";
+         if(valString.length < 2)
+          {
+            return "0" + valString;
+        }
+          else
+            {
+              return valString;
+          }
+    }
+});

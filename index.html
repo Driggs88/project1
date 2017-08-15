@@ -3,15 +3,51 @@
 <head>
 <meta charset="UTF-8" />
 <title>Maze Game</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-<!-- <canvas id="canvas" width="982" height="482">
+<canvas id="canvas" width="982" height="482">
 This text is displayed if your browser does not support HTML5 Canvas.
-</canvas> -->
+</canvas>
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button> -->
 
-<script src="script.js"></script>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Math Maze Game Instructions</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5>Let's do some math!</h5>
+        <p>Click on a button to choose the type of math operation you want to practice.</p>
+
+        <button type="button" data-dismiss="modal" class="btn btn-primary add">Add</button>
+        <button type="button" data-dismiss="modal" class="btn btn-primary subtract">Subtract</button>
+        <button type="button" data-dismiss="modal" class="btn btn-primary divide">Divide</button>
+        <button type="button" data-dismiss="modal" class="btn btn-primary multiply">Multiply</button>
+        <button type="button" data-dismiss="modal" class="btn btn-primary all">All</button>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="test.js"></script>
 <link rel="stylesheet" href="animation.css">
 </body>
 </html>
