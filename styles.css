@@ -21,3 +21,10 @@ canvas {
 body {
     padding:30px;
 }
+.btn {
+    margin-right: 10px;
+}
+.gifAnimation {
+  margin-left: 45px;
+  margin-bottom: 11px;
+}

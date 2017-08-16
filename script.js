@@ -54,7 +54,6 @@ function init() {
 //random math problem
 function changeOperator (operator){
   operation = operator;
-  console.log(operation);
 }
 function ask() {
   totalAnswers++;
@@ -100,7 +99,8 @@ function ask() {
       correctAnswers++;
       boost();
     }
-    giveFeedBack();
+    alert("Speed Boost Activated!");
+    // giveFeedBack();
 }
 
 function checkRandomChallenge() {
@@ -139,7 +139,7 @@ function prepareCharacterMove() {
     isMoving = true;
     checkcollision();
     stepCounter += dx;
-    if(stepCounter % 50 === 0) {
+    if(stepCounter % 10 === 0) {
       if  (checkRandomChallenge()){
           ask();
     }
@@ -204,7 +204,6 @@ function doKeyDown(evt){
   function checkcollision() {
     var imgd = ctx.getImageData(x, y, 20, 35);
     var pix = imgd.data;
-    // console.log(pix);
     collision = 0;
     for (var i = 0; n = pix.length, i < n; i++) {
       if (pix[i] === 223) {
@@ -227,7 +226,6 @@ setInterval(function(){
 }, 100);
 
 function draw() {
-  // console.log('Drawing');
   clear();
   drawSprite();
 }
@@ -250,9 +248,6 @@ $(document).ready(function(){
 }));
   $('.multiply').on('click', (function(){
     changeOperator('multiply');
-}));
-$('.all').on('click', (function(){
-  changeOperator('all');
 }));
 
 var minutesLabel = document.getElementById("minutes");

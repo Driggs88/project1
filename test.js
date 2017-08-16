@@ -54,7 +54,6 @@ function init() {
 //random math problem
 function changeOperator (operator){
   operation = operator;
-  console.log(operation);
 }
 function ask() {
   totalAnswers++;
@@ -99,8 +98,8 @@ function ask() {
     if(correctAnswer === Number(userAnswer)){
       correctAnswers++;
       boost();
+      alert("Speed Boost Activated!");
     }
-    giveFeedBack();
 }
 
 function checkRandomChallenge() {
@@ -128,10 +127,15 @@ function doKeyUp(evt){
 }
 
 
-
+//total  questions answer correctly
 function giveFeedBack(){
-  alert( "You got "+correctAnswers+"/"+totalAnswers+" correctly");
-
+  alert("You got "+correctAnswers+"/"+totalAnswers+" correctly");
+}
+//finish line
+function finishLine() {
+  if (x === 900) {
+    alert("Great job you've completed the Maze!");
+  }
 }
 
 function prepareCharacterMove() {
@@ -199,12 +203,12 @@ function doKeyDown(evt){
       }
       break;
     }
+
   }
 
   function checkcollision() {
     var imgd = ctx.getImageData(x, y, 20, 35);
     var pix = imgd.data;
-    // console.log(pix);
     collision = 0;
     for (var i = 0; n = pix.length, i < n; i++) {
       if (pix[i] === 223) {
@@ -212,7 +216,6 @@ function doKeyDown(evt){
         break;
       }
     }
-
   }
 
 // loop through sprite sheet
@@ -227,7 +230,6 @@ setInterval(function(){
 }, 100);
 
 function draw() {
-  // console.log('Drawing');
   clear();
   drawSprite();
 }
@@ -251,10 +253,6 @@ $(document).ready(function(){
   $('.multiply').on('click', (function(){
     changeOperator('multiply');
 }));
-$('.all').on('click', (function(){
-  changeOperator('all');
-}));
-
 var minutesLabel = document.getElementById("minutes");
 var secondsLabel = document.getElementById("seconds");
 var totalSeconds = 0;
