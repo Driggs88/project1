@@ -10,6 +10,8 @@
 </head>
 
 <body>
+<label id="minutes">00</label>:<label id="seconds">00</label>
+
 <canvas id="canvas" width="982" height="482">
 This text is displayed if your browser does not support HTML5 Canvas.
 </canvas>
@@ -24,21 +26,23 @@ This text is displayed if your browser does not support HTML5 Canvas.
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Math Maze Game Instructions</h4>
+        <h4 class="modal-title" id="exampleModalLabel">Math Maze Runner Instructions</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <h5>Let's do some math!</h5>
-        <p>Click on a button to choose the type of math operation you want to practice.</p>
-
+        <h5>Let's do some Math!</h5>
+        <ul>
+          <li>Click on a button to choose the type of math operation you want to practice.</li>
+          <li>If you answer the question correctly a speed boost will be activated.</li>
+        </ul>
+          <img class="gifAnimation" src="img/math2.gif" alt="">
+          <br>
         <button type="button" data-dismiss="modal" class="btn btn-primary add">Add</button>
         <button type="button" data-dismiss="modal" class="btn btn-primary subtract">Subtract</button>
         <button type="button" data-dismiss="modal" class="btn btn-primary divide">Divide</button>
         <button type="button" data-dismiss="modal" class="btn btn-primary multiply">Multiply</button>
-        <button type="button" data-dismiss="modal" class="btn btn-primary all">All</button>
-
 
       </div>
       <div class="modal-footer">
