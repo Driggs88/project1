@@ -4,8 +4,8 @@ $(document).ready(function(){
     var ctx;
     var dx = 4;
     var dy = 4;
-    var x = 290;
-    var y = 5;
+    var x = 880;
+    var y = 88;
     var stepCounter = 0;
     var WIDTH = 982;
     var HEIGHT = 482;
@@ -23,7 +23,7 @@ $(document).ready(function(){
     var playerOneTimeElapsed = 0;
     var playerTwoTimeElapsed = 0;
     var interval = null;
-
+    var isMovable = true;
 
     function drawSprite() {
       ctx.drawImage(sprite,spriteSheetX,spriteSheetY,24,32,x,y,24,32);
@@ -94,16 +94,25 @@ $(document).ready(function(){
             }
             break;
           default:
+      }
 
-        }
-        var userAnswer = prompt("How much is " + maxNum + " " + operationChallenge + " " + minNum + "?");
-        if(correctAnswer === Number(userAnswer)){
-          correctAnswers++;
-          boost();
-          alert("Speed Boost Activated!");
-        }
-    }
+var userQuestion = "How much is " + maxNum + " " + operationChallenge + " " + minNum + "?";
+    $('#questionModalLabel').text(userQuestion);
 
+      $("#questionModal").modal({backdrop: 'static', keyboard: false});
+          isMovable = false;
+        $('#submit').click(function(e){
+          e.preventDefault();
+          isMovable = true;
+          var userAnswer = Number($('#answer').val());
+          if(correctAnswer === Number(userAnswer)){
+            correctAnswers++;
+            $('#answer').val('');
+            boost();
+            // alert("Speed Boost Activated!");
+      }
+});
+}
     function checkRandomChallenge() {
         var odds = [3, 7, 12, 16, 24, 29, 35, 38, 41, 47];
         var randomNum =  Math.floor(Math.random() * (50 - 0)) + 1;
@@ -161,6 +170,8 @@ $(document).ready(function(){
       //reset player two to start position
       x = 290;
       y = 5;
+      correctAnswers = 0;
+      totalAnswers = 0;
       draw();
       //reset interval timer
       initInterval();
@@ -179,7 +190,7 @@ $(document).ready(function(){
         checkcollision();
         stepCounter += dx;
         checkIfPlayerDone();
-        if(stepCounter % 50 === 0) {
+        if(stepCounter % 10 === 0) {
           if  (checkRandomChallenge()){
               ask();
         }
@@ -187,59 +198,61 @@ $(document).ready(function(){
     }
 
     function doKeyDown(evt){
-      switch (evt.keyCode) {
-        case 38:  /* Up arrow was pressed */
-        evt.preventDefault();
-          if (y - dy > 0){
-            y -= dy;
-            spriteSheetY = 0;
-            prepareCharacterMove();
-            if (collision == 1){
-              y += dy;
-              collision = 0;
-            }
-          }
+      if(isMovable) {
 
-          break;
-          case 40:  /* Down arrow was pressed */
+        switch (evt.keyCode) {
+          case 38:  /* Up arrow was pressed */
           evt.preventDefault();
-          if (y + dy < HEIGHT ){
-            y += dy;
-            spriteSheetY = 64;
-            prepareCharacterMove();
-            if (collision == 1){
+            if (y - dy > 0){
               y -= dy;
-              collision = 0;
+              spriteSheetY = 0;
+              prepareCharacterMove();
+              if (collision == 1){
+                y += dy;
+                collision = 0;
+              }
             }
-          }
 
-          break;
-          case 37:  /* Left arrow was pressed */
-          evt.preventDefault();
-          if (x - dx > 0){
-            x -= dx;
-            spriteSheetY = 96;
-            prepareCharacterMove();
-            if (collision == 1){
-              x += dx;
-              collision = 0;
+            break;
+            case 40:  /* Down arrow was pressed */
+            evt.preventDefault();
+            if (y + dy < HEIGHT ){
+              y += dy;
+              spriteSheetY = 64;
+              prepareCharacterMove();
+              if (collision == 1){
+                y -= dy;
+                collision = 0;
+              }
             }
-          }
-          break;
-          case 39:  /* Right arrow was pressed */
-          evt.preventDefault();
-          if ((x + dx < WIDTH)){
-            x += dx;
-            spriteSheetY = 32;
-            prepareCharacterMove();
-            if (collision == 1){
+
+            break;
+            case 37:  /* Left arrow was pressed */
+            evt.preventDefault();
+            if (x - dx > 0){
               x -= dx;
-              collision = 0;
+              spriteSheetY = 96;
+              prepareCharacterMove();
+              if (collision == 1){
+                x += dx;
+                collision = 0;
+              }
             }
+            break;
+            case 39:  /* Right arrow was pressed */
+            evt.preventDefault();
+            if ((x + dx < WIDTH)){
+              x += dx;
+              spriteSheetY = 32;
+              prepareCharacterMove();
+              if (collision == 1){
+                x -= dx;
+                collision = 0;
+              }
+            }
+            break;
           }
-          break;
         }
-
       }
 
       function checkcollision() {
@@ -284,15 +297,15 @@ $(document).ready(function(){
     }));
       $('.subtract').on('click', (function(){
         changeOperator('subtract');
-            initInterval();
+        initInterval();
     }));
       $('.divide').on('click', (function(){
         changeOperator('divide');
-            initInterval();
+        initInterval();
     }));
       $('.multiply').on('click', (function(){
         changeOperator('multiply');
-            initInterval();
+        nitInterval();
     }));
 
     //Game timer
