@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Maze Game</title>
+<title>Math Maze Runner</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
@@ -22,14 +22,11 @@ This text is displayed if your browser does not support HTML5 Canvas.
 
 
 <!-- Menu Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="menueModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">Math Maze Runner Instructions</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h4 class="modal-title" id="titleModalLabel">Math Maze Runner Instructions</h4>
       </div>
       <div class="modal-body">
         <h5>Let's do some Math!</h5>
@@ -37,7 +34,7 @@ This text is displayed if your browser does not support HTML5 Canvas.
           <li>Click on a button to choose the type of math operation you want to practice.</li>
           <li>If you answer the question correctly a speed boost will be activated.</li>
         </ul>
-          <img class="gifAnimation" src="img/math2.gif" alt="">
+          <img class="gifAnimation" src="img/math.gif" alt="">
           <br>
         <button type="button" data-dismiss="modal" class="btn btn-primary add">Add</button>
         <button type="button" data-dismiss="modal" class="btn btn-primary subtract">Subtract</button>
@@ -53,7 +50,7 @@ This text is displayed if your browser does not support HTML5 Canvas.
 </div>
 
 <!-- Question Modal -->
-<div class="modal fade" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="questionModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -73,6 +70,5 @@ This text is displayed if your browser does not support HTML5 Canvas.
   </div>
 </div>
 <script src="test.js"></script>
-<link rel="stylesheet" href="animation.css">
 </body>
 </html>

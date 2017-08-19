@@ -4,8 +4,8 @@ $(document).ready(function(){
     var ctx;
     var dx = 4;
     var dy = 4;
-    var x = 880;
-    var y = 88;
+    var x = 290;
+    var y = 20;
     var stepCounter = 0;
     var WIDTH = 982;
     var HEIGHT = 482;
@@ -169,7 +169,7 @@ var userQuestion = "How much is " + maxNum + " " + operationChallenge + " " + mi
     function prepareForPlayerTwo() {
       //reset player two to start position
       x = 290;
-      y = 5;
+      y = 20;
       correctAnswers = 0;
       totalAnswers = 0;
       draw();
@@ -289,7 +289,7 @@ var userQuestion = "How much is " + maxNum + " " + operationChallenge + " " + mi
     window.addEventListener('keydown',doKeyDown,true);
     window.addEventListener('keyup',doKeyUp,true);
 
-      $("#exampleModal").modal();
+      $("#menuModal").modal({backdrop: 'static', keyboard: false});
 
       $('.add').on('click', (function(){
         changeOperator('add');
