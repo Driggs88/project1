@@ -114,7 +114,7 @@ var userQuestion = "How much is " + maxNum + " " + operationChallenge + " " + mi
 });
 }
     function checkRandomChallenge() {
-        var odds = [3, 7, 12, 16, 24, 29, 35, 38, 41, 47];
+        var odds = [3, 12, 24, 35, 47];
         var randomNum =  Math.floor(Math.random() * (50 - 0)) + 1;
         return odds.indexOf(randomNum) !== -1;
     }
