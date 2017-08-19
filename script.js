@@ -216,7 +216,7 @@ var userQuestion = "How much is " + maxNum + " " + operationChallenge + " " + mi
             break;
             case 40:  /* Down arrow was pressed */
             evt.preventDefault();
-            if (y + dy < HEIGHT ){
+              if (y + dy < HEIGHT ){
               y += dy;
               spriteSheetY = 64;
               prepareCharacterMove();
@@ -229,7 +229,7 @@ var userQuestion = "How much is " + maxNum + " " + operationChallenge + " " + mi
             break;
             case 37:  /* Left arrow was pressed */
             evt.preventDefault();
-            if (x - dx > 0){
+              if (x - dx > 0){
               x -= dx;
               spriteSheetY = 96;
               prepareCharacterMove();
@@ -241,7 +241,7 @@ var userQuestion = "How much is " + maxNum + " " + operationChallenge + " " + mi
             break;
             case 39:  /* Right arrow was pressed */
             evt.preventDefault();
-            if ((x + dx < WIDTH)){
+              if ((x + dx < WIDTH)){
               x += dx;
               spriteSheetY = 32;
               prepareCharacterMove();
@@ -294,19 +294,31 @@ var userQuestion = "How much is " + maxNum + " " + operationChallenge + " " + mi
       $('.add').on('click', (function(){
         changeOperator('add');
         initInterval();
+        $("#gameSound")[0].play();
+
     }));
       $('.subtract').on('click', (function(){
         changeOperator('subtract');
         initInterval();
+        $("#gameSound")[0].play();
+
+
     }));
       $('.divide').on('click', (function(){
         changeOperator('divide');
         initInterval();
+        $("#gameSound")[0].play();
+
+
     }));
       $('.multiply').on('click', (function(){
         changeOperator('multiply');
         nitInterval();
+        $("#gameSound")[0].play();
+
+
     }));
+
 
     //Game timer
     var minutesLabel = document.getElementById("minutes");
@@ -327,4 +339,5 @@ var userQuestion = "How much is " + maxNum + " " + operationChallenge + " " + mi
           return val;
         }
       }
+
 });
